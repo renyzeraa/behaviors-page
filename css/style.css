@@ -29,7 +29,7 @@ ul li a {
     letter-spacing: 2px;
 }
 
-ul li a.active {
+.tab-menu li a.active, .tab-menu li a:hover {
     background: #56cc9d;
     color: white;
     border-color: #56cc9d;
@@ -132,17 +132,15 @@ img {
 .js .item {
     opacity: 0;
     visibility: hidden;
+    transform: translate3d(-70px, 0, 0);
     position: absolute;
     top: 0;
-    transform: translate3d(-50px, 0, 0);
 }
-
 .js .item.active {
-    transition: 0.8s all ease;
-    opacity: 1;
-    height: auto;
-    visibility: visible;
     position: relative;
     top: auto;
+    opacity: 1;
+    visibility: visible;
     transform: translate3d(0, 0, 0);
-}
+    transition: 0.8s;
+} 
