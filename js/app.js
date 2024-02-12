@@ -1,3 +1,20 @@
+// Debounce do Lodash
+debounce = function (func, wait, immediate) {
+  var timeout
+  return function () {
+    var context = this,
+      args = arguments
+    var later = function () {
+      timeout = null
+      if (!immediate) func.apply(context, args)
+    }
+    var callNow = immediate && !timeout
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+    if (callNow) func.apply(context, args)
+  }
+}
+
 const aListHeader = [
   { name: 'Animais', id: 'animais' },
   { name: 'Florestas', id: 'florestas' },
@@ -52,16 +69,26 @@ function getItens(type) {
   return []
 }
 
+function getTitleSection(type) {
+  switch (type) {
+    case 'animais':
+      return 'Animais Espirituais'
+    case 'animais':
+      return 'Florestas Termais'
+    case 'montanhas':
+      return 'Montanhas da Alma'
+    default:
+      return ''
+  }
+}
+
 function createSection(type) {
+  const sTitle = getTitleSection(type)
   const section = $('<section>')
     .addClass('container ' + type)
     .attr('data-group', type)
     .attr('id', type)
-    .append(
-      $('<h1>').text(
-        type === 'animais' ? 'Animais Espirituais' : 'Florestas Termais'
-      )
-    )
+    .append($('<h1>').text(sTitle))
 
   const ul = $('<ul>').addClass('tab-menu')
   section.append(ul)
@@ -157,3 +184,29 @@ $('.logo').click(function (e) {
   e.preventDefault()
   $('html, body').animate({ scrollTop: 0 }, 800)
 })
+
+const sections = $('[data-group]').toArray()
+function activateMenuAtCurrentSection() {
+  const checkpoint = $(window).scrollTop() + ($(window).innerHeight() / 8) * 3
+  const menuHeight = $('.menu').innerHeight()
+  for (const section of sections) {
+    const sectionTop = $(section).offset().top
+    const sectionHeight = $(section).innerHeight()
+    const sectionId = $(section).attr('id')
+
+    const checkpointStart = checkpoint >= sectionTop + menuHeight
+    const checkpointEnd = checkpoint - menuHeight <= sectionTop + sectionHeight
+
+    if (checkpointStart && checkpointEnd) {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('active')
+    } else {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.remove('active')
+    }
+  }
+}
+
+$(window).scroll(debounce(activateMenuAtCurrentSection, 200))

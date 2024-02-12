@@ -75,8 +75,9 @@ ul li {
 	float: left;
 }
 
+
 .menu nav li a::after {
-	content: '';
+    content: '';
 	display: block;
 	background: white;
 	height: 2px;
@@ -84,8 +85,8 @@ ul li {
 	transition: .3s;
 }
 
-.menu nav li a:hover::after {
-	width: 100%;
+.menu nav li a:hover::after, .menu nav li a.active::after {
+    width: 100%;
 }
 
 .logo {
@@ -245,5 +246,5 @@ img {
 } 
 
 .montanhas {
-    padding: 60px 0;
+    padding-top: 60px;
 }
