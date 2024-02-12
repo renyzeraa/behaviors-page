@@ -22,7 +22,7 @@ function createHeader() {
 
 createHeader()
 
-const aTypes = ['animais', 'florestas']
+const aTypes = ['animais', 'florestas', 'montanhas']
 const aDataAnimais = [
   { name: 'Fox', id: 'fox', imgSrc: 'img/fox.jpg' },
   { name: 'Firefox', id: 'firefox', imgSrc: 'img/firefox.jpg' },
@@ -33,6 +33,11 @@ const aDataFlorestas = [
   { name: 'Sol', id: 'sol', imgSrc: 'img/sol.jpg' },
   { name: 'Verde', id: 'verde', imgSrc: 'img/verde.jpg' }
 ]
+const aDataMontanhas = [
+  { name: 'Pico', id: 'pico', imgSrc: 'img/pico.jpg' },
+  { name: 'Montanha', id: 'montanha', imgSrc: 'img/montanha.jpg' },
+  { name: 'Monte', id: 'monte', imgSrc: 'img/monte.jpg' }
+]
 
 function getItens(type) {
   if (type === 'animais') {
@@ -40,6 +45,9 @@ function getItens(type) {
   }
   if (type === 'florestas') {
     return aDataFlorestas
+  }
+  if (type === 'montanhas') {
+    return aDataMontanhas
   }
   return []
 }
