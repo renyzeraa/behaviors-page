@@ -4,7 +4,7 @@
 
 body {
 	margin: 0px;
-	padding-bottom: 120px;
+	padding-bottom: 80px;
 }
 
 .container {
@@ -243,3 +243,7 @@ img {
     transform: translate3d(0, 0, 0);
     transition: 0.8s;
 } 
+
+.montanhas {
+    padding: 60px 0;
+}

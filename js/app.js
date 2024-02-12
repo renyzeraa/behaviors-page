@@ -138,3 +138,22 @@ $(document).ready(function () {
     })
   })
 })
+
+const iMenuHeight = $('.menu').innerHeight()
+
+$('.menu nav a[href^="#"]').click(function (e) {
+  e.preventDefault()
+  const sId = $(this).attr('href')
+  const targetOffset = $(sId).offset().top
+  $('html, body').animate(
+    {
+      scrollTop: targetOffset - iMenuHeight
+    },
+    600
+  )
+})
+
+$('.logo').click(function (e) {
+  e.preventDefault()
+  $('html, body').animate({ scrollTop: 0 }, 800)
+})
