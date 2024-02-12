@@ -2,9 +2,20 @@
     box-sizing: border-box;
 }
 
+body {
+	margin: 0px;
+	padding-bottom: 120px;
+}
+
 .container {
-    max-width: 900px;
+    max-width: 1080px;
     margin: 0 auto;
+}
+
+.container::after {
+	content: '';
+	display: table;
+	clear: both;
 }
 
 a {
@@ -13,11 +24,81 @@ a {
 
 ul {
     text-align: center;
-    margin: 80px 0 40px 0;
+    margin: 40px 0;
 }
 
 ul li {
     display: inline-block;
+}
+
+.menu {
+	background: #56CC9D;
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1080px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 998px 0px 0px #56CC9D, 
+    -998px 0px 0px #56CC9D;
+}
+
+.menu nav {
+	text-align: right;
+	padding: 10px 20px 0 0;
+}
+
+.menu nav ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.menu nav li {
+	display: inline-block;
+	text-align: right;
+}
+
+.menu nav li a {
+	display: block;
+	color: white;
+	padding: 15px 20px;
+	text-decoration: none;
+	font-family: monospace;
+	text-transform: uppercase;
+	font-size: 1.3em;
+	letter-spacing: 2px;
+	float: left;
+}
+
+.menu nav li a::after {
+	content: '';
+	display: block;
+	background: white;
+	height: 2px;
+	width: 0;
+	transition: .3s;
+}
+
+.menu nav li a:hover::after {
+	width: 100%;
+}
+
+.logo {
+	display: block;
+	color: white;
+	width: 200px;
+	padding: 10px 10px 14px 20px;
+	text-decoration: none;
+	font-family: 'Playfair Display';
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-size: 2em;
+	float: left;
 }
 
 [data-click] {
@@ -86,6 +167,7 @@ img {
     float: right;
 }
 
+
 .item {
     overflow: hidden;
 }
@@ -103,9 +185,14 @@ img {
     float: left;
 }
 
+.animais {
+	padding-top: 80px;
+}
+
 .florestas {
     background: #fff3ea;
     padding: 60px 0;
+    box-shadow: 998px 0px 0px #fff3ea, -998px 0px 0px #fff3ea;
 }
 
 .florestas .item-img {
@@ -113,6 +200,10 @@ img {
     text-align: center;
     margin-bottom: -80px;
     padding: 0px;
+}
+
+.florestas img {
+    width: 100%;
 }
 
 .florestas h2 {
@@ -131,6 +222,10 @@ img {
 .item-info > div {
     width: 50%;
     float: left;
+}
+
+.item-info > div:first-child {
+    padding-right: 16px;
 }
 
 .js [data-target] {

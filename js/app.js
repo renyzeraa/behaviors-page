@@ -1,26 +1,54 @@
+const aListHeader = [
+  { name: 'Animais', id: 'animais' },
+  { name: 'Florestas', id: 'florestas' },
+  { name: 'Montanhas', id: 'montanhas' }
+]
+
+function createListHeader(aLista) {
+  return aLista.map(oData => {
+    return $('<li>').append(
+      $('<a>').attr('href', `#${oData.id}`).text(oData.name)
+    )
+  })
+}
+
+function createHeader() {
+  const header = $('<header>').addClass('menu').appendTo($('body'))
+  $('<a>').addClass('logo').attr('href', '/').text('Nature').appendTo(header)
+  $('<nav>')
+    .append($('<ul>').append(createListHeader(aListHeader)))
+    .appendTo(header)
+}
+
+createHeader()
+
 const aTypes = ['animais', 'florestas']
+const aDataAnimais = [
+  { name: 'Fox', id: 'fox', imgSrc: 'img/fox.jpg' },
+  { name: 'Firefox', id: 'firefox', imgSrc: 'img/firefox.jpg' },
+  { name: 'Wolf', id: 'wolf', imgSrc: 'img/wolf.jpg' }
+]
+const aDataFlorestas = [
+  { name: 'Estrada', id: 'estrada', imgSrc: 'img/estrada.jpg' },
+  { name: 'Sol', id: 'sol', imgSrc: 'img/sol.jpg' },
+  { name: 'Verde', id: 'verde', imgSrc: 'img/verde.jpg' }
+]
 
 function getItens(type) {
   if (type === 'animais') {
-    return [
-      { name: 'Fox', id: 'fox', imgSrc: 'img/fox.jpg' },
-      { name: 'Firefox', id: 'firefox', imgSrc: 'img/firefox.jpg' },
-      { name: 'Wolf', id: 'wolf', imgSrc: 'img/wolf.jpg' }
-    ]
+    return aDataAnimais
   }
   if (type === 'florestas') {
-    return [
-      { name: 'Estrada', id: 'estrada', imgSrc: 'img/estrada.jpg' },
-      { name: 'Sol', id: 'sol', imgSrc: 'img/sol.jpg' },
-      { name: 'Verde', id: 'verde', imgSrc: 'img/verde.jpg' }
-    ]
+    return aDataFlorestas
   }
+  return []
 }
 
 function createSection(type) {
   const section = $('<section>')
     .addClass('container ' + type)
     .attr('data-group', type)
+    .attr('id', type)
     .append(
       $('<h1>').text(
         type === 'animais' ? 'Animais Espirituais' : 'Florestas Termais'
