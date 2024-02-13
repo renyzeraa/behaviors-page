@@ -15,6 +15,7 @@ function createListHeader(aLista) {
 const createHeader = () => {
   const header = $('<header>').addClass('menu').appendTo($('body'))
   $('<a>').addClass('logo').attr('href', '/').text('Nature').appendTo(header)
+  $('<span>').addClass('mobile-btn').appendTo(header)
   $('<nav>')
     .append($('<ul>').append(createListHeader(aListHeader)))
     .appendTo(header)
