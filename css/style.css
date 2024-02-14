@@ -126,7 +126,7 @@ ul li {
 	background: white;
 	height: 2px;
 	width: 0;
-	transition: height .3s;
+	transition: width .3s;
 }
 
 .menu nav li a:hover::after, .menu nav li a.active::after {
