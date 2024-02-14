@@ -1,3 +1,5 @@
+import debounce from './debounce.js'
+
 export default function initHeader() {
   const aListHeader = [
     { name: 'Animais', id: 'animais' },
@@ -15,18 +17,19 @@ export default function initHeader() {
 
   const header = $('<header>').addClass('menu').appendTo($('body'))
   $('<a>').addClass('logo').attr('href', '/').text('Nature').appendTo(header)
-  const mobileBtn = $('<span>').addClass('mobile-btn').appendTo(header)
-  const navMenu = $('<nav>')
+  $('<span>')
+    .addClass('mobile-btn')
+    .appendTo(header)
+    .click(function () {
+      $(this).toggleClass('active')
+      if ($(this).hasClass('active')) {
+        $('.menu-nav').addClass('active')
+        return
+      }
+      $('.menu-nav').removeClass('active')
+    })
+  $('<nav>')
+    .addClass('menu-nav  mobile-menu')
     .append($('<ul>').append(createListHeader(aListHeader)))
     .appendTo(header)
-
-  $(window).on('resize', () => {
-    if ($(window).width() < 768) {
-      navMenu.hide()
-      mobileBtn.addClass('show-btn')
-    } else {
-      navMenu.show()
-      mobileBtn.removeClass('show-btn')
-    }
-  })
 }
