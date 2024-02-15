@@ -1,4 +1,7 @@
+import Slide from './slide.js'
+
 export default function initSlideIntroduction() {
+  const classSlide = 'introducao'
   const aSlides = [
     {
       title: 'Animais',
@@ -14,7 +17,9 @@ export default function initSlideIntroduction() {
     }
   ]
 
-  const section = $('<section>').addClass('introducao slide').appendTo('body')
+  const section = $('<section>')
+    .addClass(classSlide + ' slide')
+    .appendTo('body')
   aSlides.forEach(oItem => {
     $('<div>')
       .append(
@@ -27,14 +32,5 @@ export default function initSlideIntroduction() {
       .appendTo(section)
   })
 
-  $('.slide > :first').addClass('active')
-
-  setInterval(function () {
-    const activeSlide = $('.slide > .active')
-    const nextSlide = activeSlide.next().length
-      ? activeSlide.next()
-      : activeSlide.prev()
-    activeSlide.removeClass('active')
-    nextSlide.addClass('active')
-  }, 3500)
+  Slide(classSlide, 2000)
 }
