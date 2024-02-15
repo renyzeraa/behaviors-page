@@ -1,5 +1,3 @@
-import debounce from './debounce.js'
-
 export default function initHeader() {
   const aListHeader = [
     { name: 'Animais', id: 'animais' },

@@ -15,18 +15,14 @@ export default function initScrollActiveTarget() {
       const sectionHeight = $(section).innerHeight()
       const sectionId = $(section).attr('id')
 
-      const checkpointStart = checkpoint >= sectionTop + menuHeight
+      const checkpointStart = checkpoint >= sectionTop + menuHeight * 2.5
       const checkpointEnd =
-        checkpoint - menuHeight <= sectionTop + sectionHeight
+        checkpoint <= sectionTop + sectionHeight + menuHeight
 
       if (checkpointStart && checkpointEnd) {
-        document
-          .querySelector('nav ul li a[href*=' + sectionId + ']')
-          .classList.add(sActiveClass)
+        $('.menu-nav li a[href*=' + sectionId + ']').addClass(sActiveClass)
       } else {
-        document
-          .querySelector('nav ul li a[href*=' + sectionId + ']')
-          .classList.remove(sActiveClass)
+        $('.menu-nav li a[href*=' + sectionId + ']').removeClass(sActiveClass)
       }
     }
   }
