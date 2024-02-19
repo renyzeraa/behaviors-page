@@ -32,7 +32,7 @@ function getTitleSection(type) {
   switch (type) {
     case 'animais':
       return 'Animais Espirituais'
-    case 'animais':
+    case 'florestas':
       return 'Florestas Termais'
     case 'montanhas':
       return 'Montanhas da Alma'
@@ -47,7 +47,7 @@ function createSection(type) {
     .addClass('container ' + type)
     .attr('data-group', type)
     .attr('id', type)
-    .append($('<h1>').text(sTitle))
+    .append($('<h1>').text(sTitle).attr('data-anime', 'scroll'))
 
   const ul = $('<ul>').addClass('tab-menu')
   section.append(ul)
