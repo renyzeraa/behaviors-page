@@ -33,9 +33,9 @@ Contribuições são bem-vindas! Se você deseja contribuir com este projeto, si
 4. Faça push para a branch (`git push origin feature/nova-feature`).
 5. Abra um pull request.
 
-<h1>
+<h3>
 <a href='https://renyzeraa.github.io/behaviors-page/' target='_blank'>Deploy do Projeto 🚀</a>
-</h1>
+</h3>
 
 ## Contato
 
